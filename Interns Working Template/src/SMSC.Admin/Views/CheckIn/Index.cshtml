@@ -1,0 +1,195 @@
+﻿
+<title>CheckIn Management</title>
+
+
+<h4 class="page-title mt-4 text-center">CheckIn Details</h4>
+<div class="row">
+    <div class="col-md-12">
+        <div id="CheckInGrid" class="ag-theme-quartz" style="height: 800px; width: 100%;"></div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="checkReservationModal" tabindex="-1" role="dialog" aria-labelledby="checkReservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkReservationModalLabel">Check Reservation</h5>
+                <button type="button" class="close" onclick="$('#checkReservationModal').modal('hide')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formCheckReservation" data-parsley-validate>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="FirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="FirstName" placeholder="Enter First Name" name="FirstName" >
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="LastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="LastName" placeholder="Enter Last Name" name="LastName" >
+                        </div>
+
+                      
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="Email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter Email">
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label for="PhoneNo" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="PhoneNo" placeholder="Enter Phone Number" name="PhoneNo"  pattern="\d*" data-parsley-pattern-message="Please enter a valid phone number containing only digits">
+
+                        </div>
+
+                    </div>
+
+                    
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="updateReservationModal" tabindex="-1" role="dialog" aria-labelledby="updateReservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateReservationModalLabel">Update Reservation</h5>
+                <button type="button" class="close" onclick="$('#updateReservationModal').modal('hide')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formUpdateReservation" data-parsley-validate>
+                    <input type="text" id="GuestId" name="GuestId" hidden />
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            <label for="updatedFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="updatedFirstName" placeholder="Enter First Name" name="FirstName" required data-parsley-required-message="Name is required" readonly>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="updatedLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="updatedLastName" placeholder="Enter Last Name" name="LastName" required data-parsley-required-message="Name is required" readonly>
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <label for="updatedEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="updatedEmail" name="Email" placeholder="Enter Email" required data-parsley-required-message="Email is required" data-parsley-type-message="Please enter a valid email" readonly>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            <label for="updatedAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="updatedAddress" placeholder="Enter Address Name" name="Address" required data-parsley-required-message="Address is required" readonly>
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <label for="updatedPhoneNo" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="updatedPhoneNo" placeholder="Enter Phone Number" name="PhoneNo" required pattern="\d*" data-parsley-required-message="Phone number is required" data-parsley-pattern-message="Please enter a valid phone number containing only digits" readonly>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-6 mb-3">
+                            <label for="updatedReservationDateTime" class="form-label">Reservation Date and Time</label>
+                            <div class="input-group date" id="updatedReservationDateTime" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input" name="ReservationDateTime" data-target="#updatedReservationDateTime" />
+                                <div class="input-group-append" data-target="#updatedReservationDateTime" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label for="updatedAdvanceAmount" class="form-label">Advance Amount</label>
+                            <input type="number" class="form-control" id="updatedAdvanceAmount" name="AdvanceAmount" placeholder="Enter Advance Amount" step="0.01" min="0" required data-parsley-required-message="Advance amount is required" data-parsley-type-message="Please enter a valid amount">
+                        </div>
+                    </div>
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="updateReservationStatusModal" tabindex="-1" role="dialog" aria-labelledby="updateReservationStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateReservationStatusModalLabel">Update Status</h5>
+                <button type="button" class="close" onclick="$('#updateReservationStatusModal').modal('hide')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+                <form id="formUpdateReservationStatus" data-parsley-validate>
+                    <input type="text" id="updatedGuestId" name="GuestId" hidden />
+
+                    <div class="col-12 mb-3">
+                        <label for="FloorNo" class="form-label">Change Status</label>
+                        <select class="js-example-basic-single js-states form-control" id="ReservationStatus" name="ReservationStatus" required data-parsley-required-message="Reservation Status is required">
+                            <option value="Waiting"> Waiting</option>
+                            <option value="Accepted"> Accepted</option>
+                            <option value="Cancelled"> Cancelled</option>
+
+                        </select>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+@section scriptsAfter {
+    <script src="~/js/script/checkIn.js"></script>
+}
+
+
+
+

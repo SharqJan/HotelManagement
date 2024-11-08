@@ -1,0 +1,116 @@
+﻿
+<title>Room Occupancy Report </title>
+
+<h4 class="page-title mt-4 text-center">Room Occupancy Report</h4>
+<div class="row">
+    <div class="col-md-12">
+        <div id="ReportGrid" class="ag-theme-quartz" style="height: 800px; width: 100%;"></div>
+    </div>
+</div>
+
+
+
+<div id="roomOccupancyReportFilterDiv" style="display:none">
+    <form id="formInvoiceReport" data-parsley-validate>
+        <h4 class="bg-light p-3 rounded shadow-sm text-center">Get Room Occupancy Report</h4>
+        <div class="modal-body">
+
+            <!-- Row for Report Type -->
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <label for="ReportType" class="form-label">Select Report Type</label>
+                    <select class="form-control" id="ReportType" name="ReportType" data-parsley-required-message="Select Report Type">
+                        <option value="">Choose an option</option>
+                        <option value="daily">Daily</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row for Date Range Picker -->
+            <div class="row mb-4" id="dateRangeDiv">
+                <div class="col-md-12">
+                    <label for="dateRange" class="form-label">Date Range Picker</label>
+                    <input type="text" class="form-control" id="dateRange" placeholder="Select date range">
+                </div>
+            </div>
+
+            <!-- Row for Month Picker -->
+            <div class="row mb-4" id="DetailsGridMonthPickerDiv">
+                <div class="col-md-12">
+                    <label for="DetailsGridMonthPicker" class="form-label">Month Picker</label>
+                    <input type="text" class="form-control" id="DetailsGridMonthPicker" placeholder="Select month" />
+                </div>
+            </div>
+
+            <!-- Row for Revenue Inputs -->
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label for="minPercent" class="form-label">Minimum Percent:</label>
+                    <input type="text" class="form-control" id="minPercent" placeholder="Min Percent" min="0" max="99">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label for="maxPercent" class="form-label">Maximum Percent:</label>
+                    <input type="text" class="form-control" id="maxPercent" placeholder="Max Percent" min="1" max="100">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+
+<div class="container-fluid card py-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow mb-4 rounded">
+                <div class="card-header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white;">
+                    <h5 class="mb-0">Bar Chart</h5>
+                </div>
+                <div class="card-body m-0 p-0">
+                    <div id="barAgChart" class="chart-canvas"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow mb-4 rounded">
+                <div class="card-header" style="background: linear-gradient(to right, #ff7e5f, #feb47b); color: white;">
+                    <h5 class="mb-0">Pie Chart</h5>
+                </div>
+                <div class="card-body m-0 p-0">
+                    <div id="pieAgChart" class="chart-canvas"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow mb-4 rounded">
+                <div class="card-header" style="background: linear-gradient(to right, #ff6a00, #ee0979); color: white;">
+                    <h5 class="mb-0">Line Graph</h5>
+                </div>
+                <div class="card-body m-0 p-0">
+                    <div id="lineAgChart" class="chart-canvas"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section scriptsAfter {
+    <script src="~/js/script/roomOccupancyReport.js"></script>
+}
+
+
+
+
+

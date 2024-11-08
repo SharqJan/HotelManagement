@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SMSC.Admin.props" />
+</Project>

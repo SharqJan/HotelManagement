@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SMSC.Core</id>
+    <version>1.0.0</version>
+    <authors>SMSC.Core</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="15af6051906b0de9b73273de967015f8f15fc086" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="Dapper" version="2.0.90" exclude="Build,Analyzers" />
+        <dependency id="FluentValidation.AspNetCore" version="10.3.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" version="5.0.9" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="5.0.9" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.Relational" version="5.0.9" exclude="Build,Analyzers" />
+        <dependency id="NLog" version="4.7.10" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SqlClient" version="4.8.6" exclude="Build,Analyzers" />
+        <dependency id="ValueOf" version="2.0.21" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\lenovo\Downloads\Interns Working Template  NEW_Updated 2\Interns Working Template  NEW_Updated\Interns Working Template\src\SMSC.Core\bin\Debug\net5.0\SMSC.Core.dll" target="lib\net5.0\SMSC.Core.dll" />
+  </files>
+</package>

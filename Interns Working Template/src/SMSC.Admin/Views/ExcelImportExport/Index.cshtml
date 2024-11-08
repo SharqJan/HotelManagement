@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Export to Excel";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+
+        h1, h2 {
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+    <div class="container">
+        <h1 class="text-center">Export Users to Excel</h1>
+
+        <div class="text-center">
+            <a href="@Url.Action("ExportExcel", "ExcelImportExport")" class="btn btn-primary btn-lg" aria-label="Export Users to Excel">Export to Excel</a>
+        </div>
+
+        <h2 class="text-center">Import Users from Excel</h2>
+        <form asp-controller="ExcelImportExport" asp-action="ImportExcel" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose Excel File:</label>
+                <input type="file" class="form-control-file" id="file" name="file" accept=".xlsx" required aria-describedby="fileHelp" />
+                <small id="fileHelp" class="form-text text-muted">Please upload a valid .xlsx file.</small>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-success btn-lg" aria-label="Import Excel File">Import Excel</button>
+            </div>
+        </form>
+    </div>
+
+  
+</body>
+</html>

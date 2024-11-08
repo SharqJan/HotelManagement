@@ -1,0 +1,265 @@
+﻿
+<title>Room Management</title>
+
+
+
+<h4 class="page-title mt-4 text-center">Room Details</h4>
+<div class="row">
+    <div class="col-md-12">
+        <div id="RoomGrid" class="ag-theme-quartz" style="height: 800px; width: 100%;"></div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="addRoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Add Room</h5>
+                <button type="button" class="close" onclick="$('#addRoomModal').modal('hide')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formAddRoom" data-parsley-validate>
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label for="RoomNo" class="form-label">Room No</label>
+                            <input type="number" class="form-control" id="RoomNo" name="RoomNo" required data-parsley-required-message="Room No is required">
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label for="FloorNo" class="form-label">Select Floor</label>
+                            <select class="js-example-basic-single js-states form-control" id="FloorNo" name="FloorNo" required data-parsley-required-message="Floor No is required">
+                                <option selected disabled value=""> Select Option</option>
+                                <option value="1"> Ist</option>
+                                <option value="2"> Second</option>
+                                <option value ="3"> Third</option>
+                                <option value="4">Forth</option>
+                                
+                            </select>
+
+                        </div>
+                        
+                        <div class="col-6 mb-3">
+                            <label for="RoomDefaultPrice" class="form-label">Room Default Price</label>
+                            <input type="number" class="form-control" id="RoomDefaultPrice" step="0.01" placeholder="e.g., 12.34" name="RoomDefaultPrice" required data-parsley-required-message="Room Default Price is required">
+                        </div>
+
+                        <div class="col-6 mb-3">
+                            <label for="RoomAdditionalTax" class="form-label">Room Additional Tax</label>
+                            <input type="number" class="form-control" id="RoomAdditionalTax" step="0.01" placeholder="e.g., 12.34" name="RoomAdditionalTax" required data-parsley-required-message="Room Additional Tax is required">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-6 ">
+                            <label for="RoomStatus" class="form-label">Select Room Status</label>
+                            <select class=" form-control" id="RoomStatus" name="RoomStatus" required data-parsley-required-message="Room Status is required">
+                                <option selected disabled value=""> Select Option</option>
+                                <option value="Clean"> Clean</option>
+                                <option value="Dirty"> Dirty</option>
+                                <option value="Under Maintenance"> Under Maintenance</option>
+
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                   
+                        <div class="row mb-3">
+                            <div class="col-md-10">
+                                <label for="ProfileImage" class="form-label">Upload Room Images</label>
+                                <div>
+                                    <input type="file" class="form-control" id="RoomImage1" name="RoomImage1" required data-parsley-required-message="Please upload Room Image1">
+
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2">
+                                <button type="button" id="add-btn" class="btn btn-primary  shadow-sm float-end p-3">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="row g-0">
+                            <div id="file-inputs">
+                            </div>
+                        </div>
+
+
+
+                    
+
+                
+                   
+                    <div class="row mb-3 mt-3">
+                        <div class="col-4">
+                            <label class="form-label">Is Room Available</label>
+                        </div>
+
+                        <div class="col-auto">
+                            <input class="form-check-input" type="radio" name="IsRoomAvailable" id="IsRoomAvailableYes" value="true">
+                            <label class="form-check-label" for="IsRoomAvailableYes">
+                                Yes
+                            </label>
+                        </div>
+
+                        <div class="col-auto">
+
+                            <input class="form-check-input" type="radio" name="IsRoomAvailable" id="IsRoomAvailableNo" value="false">
+                            <label class="form-check-label" for="IsRoomAvailableNo">
+                                No
+                            </label>
+
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="updateRoomModal" tabindex="-1" role="dialog" aria-labelledby="updateRoomModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="upateRoomModalLabel">Update Room</h5>
+            <button type="button" class="close" onclick="$('#updateRoomModal').modal('hide')" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="formUpdateRoom" data-parsley-validate>
+
+                <input type="text" name="RoomId" id="RoomId" hidden />
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label for="updatedRoomNo" class="form-label">Room No</label>
+                        <input type="number" class="form-control" id="updatedRoomNo" name="RoomNo" required data-parsley-required-message="Room No is required">
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="updatedFloorNo" class="form-label">Select Floor</label>
+                        <select class="js-example-basic-single js-states form-control" id="updatedFloorNo" name="FloorNo" required data-parsley-required-message="Floor No is required">
+                            <option selected disabled value=""> Select Option</option>
+                            <option value="1"> Ist</option>
+                            <option value="2"> Second</option>
+                            <option value="3"> Third</option>
+                            <option value="4">Forth</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="updatedRoomDefaultPrice" class="form-label">Room Default Price</label>
+                        <input type="number" class="form-control" id="updatedRoomDefaultPrice" step="0.01" placeholder="e.g., 12.34" name="RoomDefaultPrice" required data-parsley-required-message="Room Default Price is required">
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="updatedRoomAdditionalTax" class="form-label">Room Additional Tax</label>
+                        <input type="number" class="form-control" id="updatedRoomAdditionalTax" step="0.01" placeholder="e.g., 12.34" name="RoomAdditionalTax" required data-parsley-required-message="Room Additional Tax is required">
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="updatedRoomStatus" class="form-label">Select Room Status</label>
+                            <select class="js-example-basic-single js-states form-control" id="updatedRoomStatus" name="RoomStatus" required data-parsley-required-message="Room Status is required">
+                                <option selected disabled value=""> Select Option</option>
+                                <option value="Clean"> Clean</option>
+                                <option value="Dirty"> Dirty</option>
+                                <option value="Under Maintenance"> Under Maintenance</option>
+
+
+                            </select>
+
+                        </div>
+                </div>
+
+               
+
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <label for="updatedProfileImage" class="form-label">Upload Profile Picture</label>
+                        <div >
+                                <input type="file" class="form-control" id="updatedProfileImage1" name="RoomImage1" >
+
+                                
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button type="button" id="updatedAdd-btn" class="btn btn-primary  shadow-sm float-end p-3">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+
+                </div>
+
+                    <div class="row g-0 ">
+                        <div id="updatedfile-inputs">
+                        </div>
+                    </div>
+
+
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <label class="form-label">Is Room Available</label>
+                    </div>
+
+                    <div class="col-auto">
+                        <input class="form-check-input" type="radio" name="IsRoomAvailable" id="updatedIsRoomAvailableYes" value="true">
+                            <label class="form-check-label" for="updatedIsRoomAvailableYes">
+                            Yes
+                        </label>
+                    </div>
+
+                    <div class="col-auto">
+
+                            <input class="form-check-input" type="radio" name="IsRoomAvailable" id="updatedIsRoomAvailableNo" value="false">
+                            <label class="form-check-label" for="updatedIsRoomAvailableNo">
+                            No
+                        </label>
+
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+@section scriptsAfter {
+    <script src="~/js/script/room.js"></script>
+}
+
+

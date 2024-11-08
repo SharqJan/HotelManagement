@@ -1,0 +1,54 @@
+﻿body {
+    background: url('https://images.unsplash.com/photo-1728755695713-703826e6cf16?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    overflow-y: hidden;
+}
+
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque for better readability */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 30px; /* Increased padding */
+}
+
+    .login-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+.form-control {
+    border-radius: 20px; /* Rounded input boxes */
+    padding: 15px; /* Padding for input fields */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group i {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: #888;
+}
+
+.btn-primary {
+    border-radius: 20px; /* Rounded button */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #5a52d1;
+        transform: translateY(-2px);
+    }
+
+.text-secondary {
+    transition: color 0.3s ease;
+}
+
+    .text-secondary:hover {
+        color: #5a52d1;
+    }
+
+.form-group {
+    position: relative; /* Required for positioning the icon */
+}
